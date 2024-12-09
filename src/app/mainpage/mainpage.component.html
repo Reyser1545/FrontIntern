@@ -1,106 +1,81 @@
-<body class="min-h-screen flex flex-col animate-fadeIn">
-  <!-- Main Page Header -->
-  <header class=" mb-10 border-b border-gray-300">
-    <p class="transition-transform text-4xl animate-move-right text-center p-4 text-white border-b-4 border-sky-300">
-      Hello & Welcome, {{ user.username }}
-    </p>
-  </header>
+
+  <body class="min-h-screen flex flex-col animate-fadeIn ">
+    <div> <!-- Adding gap-6 for spacing between items -->
+      <!-- Main Page Header -->
+      <div class="card">
+        <div class="flex justify-between items-center"> <!-- Flex container to align breadcrumb and Welcome text -->
+          <p-breadcrumb [model]="items"></p-breadcrumb>
+          <p class="text-black mr-5">Welcome: {{ user.username }}</p> 
+        </div>
+        <hr>
+        <p-menubar [model]="Menuitems" class="justify-items-center"></p-menubar>
+      </div>
+    </div>
 
   <!-- Main Content Section -->
   <main class="flex justify-center items-center flex-grow p-4">
-    <div class="max-w-md w-full p-6 border border-gray-300 bg-sky-900 bg-opacity-75 rounded-lg shadow-lg">
+    <div class="max-w-md w-full p-6 border bord   er-gray-300 bg-sky-900 bg-opacity-75 rounded-lg shadow-lg">
       <!-- User Information Section -->
       <div *ngIf="user" class="text-white text-center text-3xl mb-6">
         <p>Username: {{ user.username }}</p>
         <p>Email: {{ user.email }}</p>
-        <p>Password: {{ user.password }}</p>
       </div>
 
       <!-- Update and Delete Buttons -->
-      <div class="flex justify-center space-x-4">
-        <button (click)="toggleUpdateForm()" class="bg-green-600 hover:bg-green-700 py-2 px-4 rounded-md">
-          Update
-        </button>
-        <button (click)="deleteAccount()" class="bg-red-600 hover:bg-red-700 py-2 px-4 rounded-md">
-          Delete
-        </button>
+      <div class="flex justify-center space-x-8">
+        <button pButton (click)="toggleUpdateForm()" label="Update" icon="pi pi-refresh" class="text-white p-3 bg-green-600 rounded-lg shadow-sm"></button>
+        <button pButton (click)="deleteAccount()" label="Delete" icon="pi pi-trash" class=" text-white bg-red-700 p-3 rounded-lg shadow-sm  "  ></button>        
       </div>
 
-      <!-- Update Form (only visible when showUpdateForm is true) -->
-      <form *ngIf="showUpdateForm" [formGroup]="updateForm" (ngSubmit)="onUpdate()" class="mt-6 space-y-4">
-        <label class="block text-white">
-          Username:
-          <input formControlName="username" type="text" class="mt-1 p-2 w-full  text-black rounded-md bg-white" />
-        </label>
-        <div *ngIf="updateForm.get('username')?.invalid && updateForm.get('username')?.touched" class="text-red-500 text-sm mt-1">
-          <span *ngIf="updateForm.get('username')?.errors?.['required']">Username is required</span>
-          <span *ngIf="updateForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters long</span>
+      <!-- Modal Popup for Update Form -->
+      <div *ngIf="showUpdateForm" class="fixed inset-0 flex items-center justify-center z-50">
+        <div class="bg-sky-900  p-8 rounded-lg shadow-lg w-96">
+          <!-- Update Form -->
+          <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+            <div class="mb-4">
+              <label class="block text-white">Username:</label>
+              <input formControlName="username" type="text" class="mt-1 p-2 w-full text-black rounded-md bg-gray-100" />
+            </div>
+            <div *ngIf="updateForm.get('username')?.invalid && updateForm.get('username')?.touched" class="text-red-500 text-sm mt-1">
+              <span *ngIf="updateForm.get('username')?.errors?.['required']">Username is required</span>
+              <span *ngIf="updateForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters long</span>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-white">Email:</label>
+              <input formControlName="email" type="email" class="mt-1 p-2 w-full text-black rounded-md bg-gray-100" />
+            </div>
+            <div *ngIf="updateForm.get('email')?.invalid && updateForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+              <span *ngIf="updateForm.get('email')?.errors?.['required']">Email is required</span>
+              <span *ngIf="updateForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-white">Password:</label>
+              <input formControlName="password" type="password" class="mt-1 p-2 w-full text-black rounded-md bg-gray-100" />
+            </div>
+            <div *ngIf="updateForm.get('password')?.invalid && updateForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+              <span *ngIf="updateForm.get('password')?.errors?.['required']">Password is required</span>
+              <span *ngIf="updateForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</span>
+            </div>
+            <div class="flex justify-center space-x-4 mt-6">
+              <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
+                [disabled]="updateForm.invalid"
+              >
+                Save Changes
+              </button>
+              <button (click)="toggleUpdateForm()" class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md">
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
 
-        <label class="block text-white">
-          Email:
-          <input formControlName="email" type="email" class="mt-1 p-2 w-full  text-black rounded-md bg-white" />
-        </label>
-        <div *ngIf="updateForm.get('email')?.invalid && updateForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
-          <span *ngIf="updateForm.get('email')?.errors?.['required']">Email is required</span>
-          <span *ngIf="updateForm.get('email')?.errors?.['email']">Please enter a valid email</span>
-        </div>
-
-        <label class="block text-white">
-          Password:
-          <input formControlName="password" type="password" class="mt-1 p-2 w-full text-black rounded-md bg-white" />
-        </label>
-        <div *ngIf="updateForm.get('password')?.invalid && updateForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
-          <span *ngIf="updateForm.get('password')?.errors?.['required']">Password is required</span>
-          <span *ngIf="updateForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</span>
-        </div>
-
-        <div class="flex items-center justify-center ">
-          <button
-            type="submit"
-            class=" block text-center text-white hover:bg-sky-700 duration-300 p-2 rounded-md"
-            [disabled]="updateForm.invalid"
-          >
-            Save Changes
-          </button>
-        </div>
-      </form>
-
-      <!-- Logout Link -->
-      <a routerLink="/" class="block text-center text-white mt-5 hover:bg-sky-700 duration-300 p-2 rounded-md">
-        Logout
-      </a>
-
-      <a routerLink="/user" class="block text-center text-white  hover:bg-sky-700 duration-300 p-2 rounded-md">
-        User Page
-      </a>
-
-      <a routerLink="/play" class="block text-center text-white  hover:bg-sky-700 duration-300 p-2 rounded-md">
-        Playground
-      </a>
-
-      <!-- Admin Page Link (only visible if the user is admin) -->
-      <a *ngIf="isAdminUser()" routerLink="/admin" class="block text-center text-white  hover:bg-sky-700 duration-300 p-2 rounded-md">
-        Admin Page
-      </a>
-
+      <!-- Other links -->
     </div>
   </main>
 
-
-    <ng-template pTemplate="header">
-      <h2>Moodeng Video</h2>
-
-    <video #media controls class="video-container">
-      <source [src]="videoSource" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-  </ng-template>
-  <!-- Footer Section -->
-  <footer class="bg-[#0d031c] mt-auto border-t border-gray-300">
-    <p class="transition-transform text-4xl animate-move-right text-center p-4 text-white border-t-4 border-sky-300">
-      Main Page
-    </p>
-  </footer>
 </body>

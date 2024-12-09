@@ -5,13 +5,16 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';  // Import RouterModule for routing
 import { GalleriaModule } from 'primeng/galleria';
 import { AccordionModule } from 'primeng/accordion';
+import { UserService } from '../../user.service'; // Custom service to manage user data
+
 // Import Videogular Modules
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { MenubarModule } from 'primeng/menubar';
-
+import { MenuItem } from 'primeng/api'; // Import MenuItem type for menu items
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 // Import PrimeNG Card Module
 import { CardModule } from 'primeng/card';
 
@@ -30,13 +33,24 @@ import { CardModule } from 'primeng/card';
     VgBufferingModule,
     GalleriaModule,
     AccordionModule,
-    MenubarModule
+    MenubarModule,
+    BreadcrumbModule,
+
   ],
   templateUrl: './playground.component.html',
   styleUrls: ['./playground.component.css']  // Fixed styleUrls (changed from styleUrl)
 })
 export class PlaygroundComponent implements OnInit {
   videoSource = 'assets/video/MooDeng.mp4'; // Ensure correct relative path for assets
+  items: MenuItem[] | undefined; // Array to store menu items
+  
+  currentUser: string | null = null;
+  isAdmin: boolean = false;
+
+
+ 
+
+
 
   @ViewChild('media') media!: ElementRef<HTMLVideoElement>; // Use non-null assertion here
 
@@ -58,7 +72,7 @@ export class PlaygroundComponent implements OnInit {
   videoItems = [
     {
       videoSrc: 'assets/video/MooDeng.mp4',
-      thumbnailSrc: '1'  
+      thumbnailSrc: 'assets/video/Moodeng.mp4'  
     },
     {
       videoSrc: 'assets/video/Gumi.mp4',
@@ -68,8 +82,8 @@ export class PlaygroundComponent implements OnInit {
       videoSrc: 'assets/video/Cockatoo.mp4',
       thumbnailSrc: 'assets/video/Cocktaoo.mp4'
     },
-
   ];
+  
 
   // Define responsive options for different screen sizes
   responsiveOptions = [
@@ -96,8 +110,29 @@ export class PlaygroundComponent implements OnInit {
   // Initially, set the first video as the selected video
   selectedVideo = this.videoItems[0];
 
-  constructor() {}
+  constructor(private userService: UserService,) {this.items = [
+    { label: 'Mainpage', icon: 'pi pi-home', routerLink: ['/mainpage'] },
+    { label: 'Playground'}
+  ]
 
+}
+setUser(user: any) {
+  if (user === null) {
+    sessionStorage.removeItem('user'); // Remove user from sessionStorage when null is passed
+  } else {
+    sessionStorage.setItem('user', JSON.stringify(user)); // Store user as a string when it's not null
+  }
+}
+
+getUser() {
+  this.currentUser = this.userService.gettingUser();
+  alert(`Current User: ${this.currentUser}`);
+}
+
+checkAdmin() {
+  this.isAdmin = this.userService.isAdmin();
+  alert(`Is Admin: ${this.isAdmin}`);
+}
   ngOnInit(): void {
     // Add any initialization logic if needed
   }

@@ -1,8 +1,7 @@
 <body>
-
   <!-- Main Content Wrapper with Background Image -->
   <div class="min-h-screen flex justify-center items-center bg-cover bg-center">
-    <div class="max-w-md w-full p-6 bg-sky-900 bg-opacity-75 rounded-lg shadow-lg">
+    <div class="max-w-md w-full p-6 bg-sky-900 bg-opacity-85 rounded-lg shadow-lg">
       <!-- Login Form Section -->
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-fluid space-y-4 p-10">
 
@@ -35,23 +34,24 @@
             class="p-password p-component w-full p-border-round focus:outline-none focus:ring-2 focus:ring-blue-400"
           ></p-password>
           <small *ngIf="f['password'].invalid && f['password'].touched" class="p-error text-red-500 text-sm">
-            Password is required or must be at least 6 characters long
+            Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
           </small>
         </div>
+        
         <!-- Submit Button -->
-          <button
-            type="submit"
-            pButton
-            label="Login"
-            icon="pi pi-sign-in"
-            [disabled]="loginForm.invalid"
-            class="text-center w-full p-3 rounded-md bg-gray-300 text-sky-900 mt-5 hover:bg-sky-600 hover:text-white disabled:bg-gray-500"
-          ></button>
-
+        <button
+          type="submit"
+          pButton
+          label="Login"
+          icon="pi pi-sign-in"
+          [disabled]="loginForm.invalid"
+          class="text-center w-full p-3 rounded-md bg-gray-300 text-sky-900 mt-5 hover:bg-sky-600 hover:text-white disabled:bg-gray-500"
+        ></button>
+        
         <!-- Back to Home Link -->
         <div class="text-center">
-        <a routerLink="/" class="hover:bg-sky-700 text-white mt-5 inline-block text-center transition-colors duration-300">Back to Home</a>
-      </div>
+          <a routerLink="/" class="hover:bg-sky-700 text-white mt-5 inline-block text-center transition-colors duration-300">Back to Home</a>
+        </div>
       </form>
     </div>
   </div>

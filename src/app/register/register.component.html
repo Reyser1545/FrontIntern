@@ -1,5 +1,6 @@
-<div class="min-h-screen flex justify-center items-center">
-  <div class="max-w-md w-full  p-10 bg-sky-900 bg-opacity-75 rounded-lg shadow-lg">
+<body class="bg-cover bg-center bg-fixed" >
+  <div class="min-h-screen flex justify-center items-center">
+  <div class="max-w-md w-full  p-10 bg-sky-900 bg-opacity-85 rounded-lg shadow-lg">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <h2 class="text-center text-2xl p-2 font-semibold mb-6 text-white">Register</h2>
 
@@ -7,14 +8,16 @@
       <div class="mb-4">
         <label for="username" class="block font-bold text-white">Username</label>
         <input type="text" id="username" formControlName="username" placeholder="Enter your username" class="w-full bg-white p-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
-        <p-message *ngIf="f['username'].invalid && f['username'].touched" severity="error" text="Username is required or must be at least 3 characters long"></p-message>
+        <small *ngIf="f['username'].invalid && f['username'].touched" class="p-error text-red-500 text-sm" 
+        >Username is required or must be at least 3 characters long</small>
       </div>
 
       <!-- Email Field -->
       <div class="mb-4">
         <label for="email" class="block font-bold text-white">Email</label>
         <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="w-full  bg-white p-2 mt-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
-        <p-message *ngIf="f['email'].invalid && f['email'].touched" severity="error" text="Email is required or must be a valid email address"></p-message>
+        <small *ngIf="f['email'].invalid && f['email'].touched" class="p-error text-red-500 text-sm" 
+        >Email is required or must be a valid email address</small>
       </div>
 
       <!-- Password Field -->
@@ -31,7 +34,7 @@
           class="p-password w-full p-border-round focus:outline-none focus:ring-2 focus:ring-blue-400"
         ></p-password>
         <small *ngIf="f['password'].invalid && f['password'].touched" class="p-error text-red-500 text-sm">
-          Password is required or must be at least 6 characters long
+          Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
         </small>
       </div>
 
@@ -52,3 +55,4 @@
     </form>
   </div>
 </div>
+</body>

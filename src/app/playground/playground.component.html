@@ -1,4 +1,22 @@
+<p-breadcrumb [model]="items"></p-breadcrumb>
+<br><br>
 <body>
+    <div class="text-stone-50">
+      <button (click)="setUser('admin')">Set User as Admin</button>
+      <br>
+      <button (click)="setUser('user')">Set User as Regular User</button>
+      <br>
+      <button (click)="getUser()">Get User</button>
+      <br>
+      <button (click)="checkAdmin()">Check if Admin</button>
+      <br>
+      <button (click)="setUser(null)">Set User as Not logged In</button>
+
+    </div>
+
+    <p>Current User: {{ currentUser }}</p>
+    <p>Is Admin: {{ isAdmin }}</p>
+<br><br><br><br><br><br><br><br><br><br><br>
     <div class="video-container">
         <p-galleria class="video"
             [value]="videoItems" 
@@ -12,14 +30,17 @@
                   <source [src]="item.videoSrc" type="video/mp4">
                   Your browser does not support the video tag.
               </video>
+              <div class="grid grid-nogutter justify-content-center">
+                <img [src]="item.thumbnailImageSrc" />
+            </div>
           </ng-template>
       
           <!-- Template for the thumbnail displayed in the thumbnail bar -->
           <ng-template pTemplate="thumbnail" let-item>
-              <div class="grid grid-nogutter justify-content-center">
-                  <img [src]="item.thumbnailSrc" style="width: 100%; cursor: pointer;" (click)="selectVideo(item)" />
-              </div>
-          </ng-template>
+            <div class="grid grid-nogutter justify-content-center">
+                <img [src]="item.thumbnailSrc" style="width: 100%; cursor: pointer;" (click)="selectVideo(item)" />
+            </div>
+        </ng-template>
         </p-galleria>
       </div>
       <br>

@@ -1,20 +1,43 @@
 import { Injectable } from '@angular/core';
-
+//
 @Injectable({
   providedIn: 'root'
 })
-
 export class UserService {
-  private user: any = null; //เก็บเป็น null
+  clearUser() {
+    sessionStorage.removeItem('user'); // Remove user data from sessionStorage
+  }
+  user: any;
+  // Set user data in sessionStorage
+  // UserService
+setUser(user: any): void {
+  if (user) {
+    sessionStorage.setItem('user', JSON.stringify(user));  // Store user in sessionStorage
+    console.log('User stored in session:', user);
+  } else {
+    console.error('No user data to store.');
+  }
+}
 
-  setUser(user: any) { //เก็บค่าที่เข้ามาใส่ใน user
-    this.user = user;//
+gettingUser() {
+  const user = sessionStorage.getItem('user');
+  console.log('Retrieved user from sessionStorage:', user);  // Log the stored user
+  return user ? JSON.parse(user) : null;
+}
+
+
+  getUserRole(): string {
+    const user = this.gettingUser();
+    return user?.role || ''; // Return role if exists
   }
-  gettingUser() {
-    return this.user; // ข้อมูลผู้ใช้สามารถถูกดึงออกมาใช้งานที่ส่วนต่างๆ ของแอปพลิเคชันผ่านการเรียก
-  }
-  isAdmin() {
-    return this.user && this.user === 'admin'; // Check if user role is 'admin'
+  // Check if the user is admin
+  isAdmin(): boolean {
+    const user = this.gettingUser(); // Retrieve user from sessionStorage
+    return user?.role === 'admin'; // Directly access role from the user object
   }
   
 }
+
+/* The UserService provides a centralized way to manage user data, primarily through sessionStorage. 
+It is a core service 
+for handling user-related operations, including setting, retrieving, clearing user data, and role-based logic.*/

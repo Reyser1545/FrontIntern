@@ -1,124 +1,123 @@
 {
-  "post": [],
+  "upload": [],
   "signupUsers": [
     {
       "id": "1576",
-      "username": "NuttaponKong",
+      "username": "Nuttapon",
       "email": "Nuttapon@gmail.com",
-      "password": "Reyser"
+      "password": "Reyser",
+      "role": "user"
     },
     {
       "id": "5ec0",
       "username": "admin",
       "email": "admin123@gmail.com",
-      "password": "admin123"
+      "password": "admin123",
+      "role": "admin"
     },
     {
+      "id": "bb17",
       "username": "Reyser",
       "email": "Reyser1234@gmail.com",
       "password": "Reyser",
-      "id": "bb17"
-    },
-    {
-      "id": "93d8",
-      "username": "test",
-      "email": "test2@email.com",
-      "password": "test123"
+      "role": "user"
     },
     {
       "id": "8afe",
       "username": "PrimeNG",
       "email": "PrimeNG@gmail.com",
-      "password": "PrimeNG"
+      "password": "PrimeNG",
+      "role": "user"
     },
     {
-      "id": "766c",
+      "id": "57d9",
       "username": "admin",
-      "email": "test2@email.com",
-      "password": "admin123"
+      "email": "Nuttapon@email.com",
+      "password": "L!f3l@n9",
+      "role": "admin"
+    },
+    {
+      "id": "179a",
+      "username": "Reyser",
+      "email": "Reyser@gmail.com",
+      "password": "Reyser",
+      "role": "user"
+    },
+    {
+      "id": "426e",
+      "username": "User1",
+      "email": "User@gmail.com",
+      "password": "User123",
+      "role": "user"
     }
   ],
   "users": [
     {
-      "id": "f149",
-      "department": "Accounts",
-      "name": "Kimy",
-      "mobile": "9087654454",
-      "email": "test2@email.com",
-      "gender": "Male",
-      "doj": "2024-10-30",
-      "city": "Seoul",
-      "salary": "200000",
-      "address": "Seoul",
-      "status": true
-    },
-    {
-      "id": "f149",
-      "department": "Accounts",
-      "name": "Alice",
-      "mobile": "9087654454",
-      "email": "test2@email.com",
-      "gender": null,
-      "doj": "2024-10-30",
-      "city": "Seoul",
-      "salary": "200000",
-      "address": "Seoul",
-      "status": true
-    },
-    {
-      "id": "ac0c",
-      "department": "Management",
-      "name": "Joe",
-      "mobile": "9374859221",
-      "email": "John@email.com",
-      "gender": "Male",
-      "doj": "2024-11-21",
-      "city": "Barcelona",
-      "salary": "300000",
-      "address": "Waaaa",
-      "status": true
-    },
-    {
       "id": "eb19",
       "department": "HR",
       "name": "John",
-      "mobile": "0898282",
+      "mobile": "0673625555",
       "email": "John@email.com",
       "gender": "Male",
       "doj": "2024-11-01",
       "city": "London",
-      "salary": "20000",
+      "salary": "28000",
       "address": "Waaaa",
-      "status": true
+      "status": "Active"
     },
     {
-      "id": "f8b7",
-      "department": "Sales",
-      "name": "Joey",
-      "mobile": "9374859221",
-      "email": "John@email.com",
-      "gender": "Male",
-      "doj": "2024-11-05",
-      "city": "Barcelona",
-      "salary": "121221",
-      "address": "Waaaa",
-      "status": true
-    },
-    {
-      "id": "3282",
+      "id": "10cb",
       "department": "IT",
       "name": "Nuttapon",
       "mobile": "0898290117",
       "email": "Nuttapon@email.com",
       "gender": "Male",
-      "doj": "2017-10-30",
-      "city": "Bangkok",
-      "salary": "2000",
+      "doj": "2018-01-11",
+      "city": "Seoul",
+      "salary": "45000",
       "address": "Yannawa Sathupradit road Sathu49",
-      "status": true
+      "status": "Active"
+    },
+    {
+      "id": "ac0c",
+      "department": "HR",
+      "name": "AA",
+      "mobile": "0898290117",
+      "email": "test2@email.com",
+      "gender": "Male",
+      "doj": "2024-11-05",
+      "city": "Seoul",
+      "salary": "20000",
+      "address": "adsdsad",
+      "status": "Active"
+    },
+    {
+      "id": "6ccf",
+      "department": "Accounts",
+      "name": "AA",
+      "mobile": "dasdasd",
+      "email": "test2@email.com",
+      "gender": "Male",
+      "doj": "2024-10-31",
+      "city": "Seoul",
+      "salary": "0asdasdasdas",
+      "address": "adsdsad",
+      "status": "Active"
+    },
+    {
+      "id": "7df6",
+      "department": "IT",
+      "name": "Nuttapon",
+      "mobile": "0898290117",
+      "email": "Nuttapon@email.com",
+      "gender": "Male",
+      "doj": "2024-12-04",
+      "city": "Bangkok",
+      "salary": "10000",
+      "address": "Yannawa Sathupradit road Sathu49",
+      "status": "Active"
     }
   ],
-  "commants": [],
   "profile": {
     "name": "typicode"
   }

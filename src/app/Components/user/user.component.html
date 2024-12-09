@@ -1,180 +1,184 @@
-<div class="container-fluid">
-    
-    <div class="row ">
-        <!-- Left Column: Big Table -->
-        <div class="col-8">
-            <div class="card " >
-                <div class="card-header bg-purple-700 bg-opacity-75 text-white">
-                    <div class="row">
-                        <div class="col-6">
-                            <h6>User List</h6>
-                        </div>
-                        <div class="col-6 ">
-                            <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search by Name Department or Mobile" (input)="onSearch()">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-body ">
-                    <table class="table     ">
-                        <thead>
-                            <tr>
-                                <th>Department</th>
-                                <th>Name</th>
-                                <th>Gender</th>
-                                <th>Mobile</th>
-                                <th>Email</th>
-                                <th>DOJ</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                                <tr *ngFor="let item of filteredUserList; trackBy: trackByIndex">
-                                    <td class="hover:bg-emerald-300">{{item.department}}</td>
-                                    <td class="hover:bg-emerald-300">{{item.name}}</td>
-                                    <td class="hover:bg-emerald-300">{{item.gender ? 'Male' : 'Female'}}</td>
-                                    <td class="hover:bg-emerald-300">{{item.mobile}}</td>
-                                    <td class="hover:bg-emerald-300">{{item.email}}</td>
-                                    <td class="hover:bg-emerald-300">{{item.doj}}</td>
-                                    <td class="hover:bg-emerald-300">{{item.status ? 'Active' : 'Inactive'}}</td>
-                                    <td class="text-center">
-                                        <!-- Edit Button with PrimeNG -->
-                                        <button pButton icon="pi pi-pencil" label="Edit" class="p-button-text hover:bg-green-500" (click)="onEdit(item)"></button><br>
+<p-breadcrumb [model]="items"></p-breadcrumb>
+  <div class="container-fluid">
 
-                                        <!-- Delete Button with PrimeNG -->
-                                        <button pButton icon="pi pi-trash" label="Delete" class="p-button-danger p-button-text hover:bg-red-500" (click)="onDelete(item.id)"></button>
-                                    </td>
 
-                                  </tr>
-                                  
-                        
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- Right Column: Small Table -->
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header  bg-purple-700 bg-opacity-75 text-white">
-                    <div class="row">
-                        <div class="col-6 text-white">
-                            <h6>{{editMode ? 'Udpate User' : 'Add User'}}</h6>
-                        </div>
-                        <div class="col-6 text-end">
-                            <button class="btn btn-info" (click)="onRestForm(userForm)">Reset</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form class="row g-4" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-                        <div class="col-6">
-                          <select class="form-select" required [(ngModel)]="user.department" name="department">
-                            <option value="">Select Department</option>
-                            @for( item of departmentList; track $index)
-                            {
-                                <option> {{item}} </option>
-                            }
-                          </select>
-                        </div>
-                     
-                        <!--start save form-->
-                        <div class="col-6">
-                            <input type="text" class="form-control " [(ngModel)]="user.name" name="name" required placeholder="Name" id="">
-                            <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['name'].errors?.['required']">Name is required.</small>
-                              <small *ngIf="userForm.controls['name'].errors?.['minlength']">Name must be at least 3 characters long.</small>
-                            </div>
-                          </div>
-                          
+      <div class="row ">
+          <!-- Left Column: Big Table -->
+          <div class="col-8">
+              <div class="card " >
+                  <div class="card-header bg-purple-700 bg-opacity-75 text-white">
+                      <div class="row">
                           <div class="col-6">
-                            <input type="email" class="form-control" name="email" [(ngModel)]="user.email" required placeholder="Email" id="">
-                            <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['email'].errors?.['required']">Email is required.</small>
-                              <small *ngIf="userForm.controls['email'].errors?.['email']">Enter a valid email address.</small>
-                            </div>
+                              <h6>User List</h6>
                           </div>
+                          <div class="col-6 ">
+                              <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Search by Name Department or Mobile" (input)="onSearch()">
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="card-body ">
+                      <table class="table     ">
+                          <thead>
+                              <tr>
+                                  <th>Department</th>
+                                  <th>Name</th>
+                                  <th>Gender</th>
+                                  <th>Mobile</th>
+                                  <th>Email</th>
+                                  <th>DOJ</th>
+                                  <th>Status</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              
+                                  <tr *ngFor="let item of filteredUserList; trackBy: trackByIndex">
+                                      <td class="hover:bg-emerald-300">{{item.department}}</td>
+                                      <td class="hover:bg-emerald-300">{{item.name}}</td>
+                                      <td class="hover:bg-emerald-300">{{item.gender}}</td>
+                                      <td class="hover:bg-emerald-300">{{item.mobile}}</td>
+                                      <td class="hover:bg-emerald-300">{{item.email}}</td>
+                                      <td class="hover:bg-emerald-300">{{item.doj}}</td>
+                                      <td class="hover:bg-emerald-300">{{item.status}}</td>
+                                      <td class="text-center">
+                                          <!-- Edit Button with PrimeNG -->
+                                          <button pButton icon="pi pi-pencil" label="Edit" class="p-button-text hover:bg-green-500" (click)="onEdit(item)"></button><br>
+
+                                          <!-- Delete Button with PrimeNG -->
+                                          <button pButton icon="pi pi-trash" label="Delete" class="p-button-danger p-button-text hover:bg-red-500" (click)="onDelete(item.id)"></button>
+                                      </td>
+
+                                    </tr>
+                                    
                           
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <!-- Right Column: Small Table -->
+          <div class="col-4">
+              <div class="card">
+                  <div class="card-header  bg-purple-700 bg-opacity-75 text-white">
+                      <div class="row">
+                          <div class="col-6 text-white">
+                              <h6>{{editMode ? 'Udpate User' : 'Add User'}}</h6>
+                          </div>
+                          <div class="col-6 text-end">
+                              <button class="btn btn-info" (click)="onRestForm(userForm)">Reset</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <form class="row g-4" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
                           <div class="col-6">
-                            <input type="text" class="form-control" [(ngModel)]="user.mobile" name="mobile" required placeholder="Mobile" id="">
-                            <div *ngIf="userForm.controls['mobile'].invalid && userForm.controls['mobile'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['mobile'].errors?.['required']">Mobile is required.</small>
-                              <small *ngIf="userForm.controls['mobile'].errors?.['pattern']">Enter a valid mobile number.</small>
-                            </div>
-                          </div>
-                          
-                          <div class="col-6">
-                            <input type="date" class="form-control" name="doj" [(ngModel)]="user.doj" required placeholder="Date of Joining" id="">
-                            <div *ngIf="userForm.controls['doj'].invalid && userForm.controls['doj'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['doj'].errors?.['required']">Date of joining is required.</small>
-                            </div>
-                          </div>
-                          
-                          <div class="col-6">
-                            <input type="text" class="form-control" [(ngModel)]="user.salary" name="salary" required placeholder="Salary" id="">
-                            <div *ngIf="userForm.controls['salary'].invalid && userForm.controls['salary'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['salary'].errors?.['required']">Salary is required.</small>
-                              <small *ngIf="userForm.controls['salary'].errors?.['min']">Salary must be greater than 4 number.</small>
-                            </div>
-                          </div>
-                          
-                          <div class="col-12">
-                            <textarea class="form-control" [(ngModel)]="user.address" name="address" required placeholder="Address"></textarea>
-                            <div *ngIf="userForm.controls['address'].invalid && userForm.controls['address'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['address'].errors?.['required']">Address is required.</small>
-                              <small *ngIf="userForm.controls['address'].errors?.['minlength']">Address must be at least 10 characters long.</small>
-                            </div>
-                          </div>
-                          
-                          <div class="col-6">
-                            <div class="form-check form-check-inline">
-                              <input type="radio" class="form-check-input border-1 border-black" [(ngModel)]="user.gender" name="gender" id="male" value="Male" required>
-                              <label class="form-check-label" for="male">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input type="radio" class="form-check-input border-1 border-black" [(ngModel)]="user.gender" name="gender" id="female" value="Female" required>
-                              <label class="form-check-label" for="female">Female</label>
-                            </div>
-                            <div *ngIf="userForm.controls['gender'].invalid && userForm.controls['gender'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['gender'].errors?.['required']">Gender is required.</small>
-                            </div>
-                          </div>
-                          
-                          <div class="col-6">
-                            <select class="form-select" required [(ngModel)]="user.city" name="city">
-                              <option value="">Select City</option>
-                              <option *ngFor="let item of CityList">{{item}}</option>
+                            <select class="form-select" required [(ngModel)]="user.department" name="department">
+                              <option value="">Select Department</option>
+                              @for( item of departmentList; track $index)
+                              {
+                                  <option> {{item}} </option>
+                              }
                             </select>
-                            <div *ngIf="userForm.controls['city'].invalid && userForm.controls['city'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['city'].errors?.['required']">City is required.</small>
-                            </div>
                           </div>
-                          
-                          <div class="col-12">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input border-1 border-black" [(ngModel)]="user.status" name="status" required>
-                              <label class="form-check-label ">Active?</label>
+                      
+                          <!--start save form-->
+                          <div class="col-6">
+                              <input type="text" class="form-control " [(ngModel)]="user.name" name="name" required placeholder="Name" id="">
+                              <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['name'].errors?.['required']">Name is required.</small>
+                                <small *ngIf="userForm.controls['name'].errors?.['minlength']">Name must be at least 3 characters long.</small>
+                              </div>
                             </div>
-                            <div *ngIf="userForm.controls['status'].invalid && userForm.controls['status'].touched" class="text-danger">
-                              <small *ngIf="userForm.controls['status'].errors?.['required']">Status is required.</small>
+                            
+                            <div class="col-6">
+                              <input type="email" class="form-control" name="email" [(ngModel)]="user.email" required placeholder="Email" id="">
+                              <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['email'].errors?.['required']">Email is required.</small>
+                                <small *ngIf="userForm.controls['email'].errors?.['email']">Enter a valid email address.</small>
+                              </div>
                             </div>
-                          </div>
+                            
+                            <div class="col-6">
+                              <input type="text" class="form-control" [(ngModel)]="user.mobile" name="mobile" required placeholder="Mobile" id="">
+                              <div *ngIf="userForm.controls['mobile'].invalid && userForm.controls['mobile'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['mobile'].errors?.['required']">Mobile is required.</small>
+                                <small *ngIf="userForm.controls['mobile'].errors?.['pattern']">Enter a valid mobile number.</small>
+                              </div>
+                            </div>
+                            
+                            <div class="col-6">
+                              <input type="date" class="form-control" name="doj" [(ngModel)]="user.doj" required placeholder="Date of Joining" id="">
+                              <div *ngIf="userForm.controls['doj'].invalid && userForm.controls['doj'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['doj'].errors?.['required']">Date of joining is required.</small>
+                              </div>
+                            </div>
+                            
+                            <div class="col-6">
+                              <input type="text" class="form-control" [(ngModel)]="user.salary" name="salary" required placeholder="Salary" id="">
+                              <div *ngIf="userForm.controls['salary'].invalid && userForm.controls['salary'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['salary'].errors?.['required']">Salary is required.</small>
+                                <small *ngIf="userForm.controls['salary'].errors?.['min']">Salary must be greater than 4 number.</small>
+                              </div>
+                            </div>
+                            
+                            <div class="col-12">
+                              <textarea class="form-control" [(ngModel)]="user.address" name="address" required placeholder="Address"></textarea>
+                              <div *ngIf="userForm.controls['address'].invalid && userForm.controls['address'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['address'].errors?.['required']">Address is required.</small>
+                                <small *ngIf="userForm.controls['address'].errors?.['minlength']">Address must be at least 10 characters long.</small>
+                              </div>
+                            </div>
+                            
+                            <div class="col-6">
+                              <select class="form-select" [(ngModel)]="user.gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                              <div *ngIf="userForm.controls['gender'].invalid && userForm.controls['gender'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['gender'].errors?.['required']">Gender is required.</small>
+                              </div>
+                            </div>
+                            
                           
-                          <div class="col-12">
-                            <button class="btn btn-secondary bg-purple-800 w-100" type="submit" [disabled]="userForm.invalid">{{editMode ? 'Update' : 'Save'}}</button>
-                          </div>
-                          
-                    <button
-                        (click)="goBack()"
-                        class="text-center bg-purple-800 text-white px-4 py-2 rounded-md hover:bg-purple-900 mb-4"
-                    >Back to Main Page
-                    </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                            <div class="col-6">
+                              <select class="form-select" required [(ngModel)]="user.city" name="city">
+                                <option value="">Select City</option>
+                                <option *ngFor="let item of CityList">{{item}}</option>
+                              </select>
+                              <div *ngIf="userForm.controls['city'].invalid && userForm.controls['city'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['city'].errors?.['required']">City is required.</small>
+                              </div>
+                            </div>
+                            
+                            <div class="col-6">
+                              <select class="form-select" [(ngModel)]="user.status" name="status" required>
+                                <option value="">Select Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                              </select>
+                              <div *ngIf="userForm.controls['status'].invalid && userForm.controls['status'].touched" class="text-danger">
+                                <small *ngIf="userForm.controls['status'].errors?.['required']">Status is required.</small>
+                              </div>
+                            </div>
+                            
 
-</div>
+
+
+                            <div class="col-12">
+                              <button class="btn btn-secondary bg-purple-800 w-100" type="submit" [disabled]="userForm.invalid">{{editMode ? 'Update' : 'Save'}}</button>
+                            </div>
+                            
+                      <button
+                          (click)="goBack()"
+                          class="text-center bg-purple-800 text-white px-4 py-2 rounded-md hover:bg-purple-900 mb-4"
+                      >Back to Main Page
+                      </button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>

@@ -1,33 +1,28 @@
-<body class="animate-fadeIn">
+  <body class="animate-fadeIn">
+    <header class="bg-[#0d031c] mb-10 border-b border-gray-300">
+      <p class="text-center p-8 text-white border-b-4 border-sky-300">
+        Project Login and Register & CRUD
+      </p>
+    </header>
 
-  <!-- Project Title Section -->
-  <header class="bg-[#0d031c] mb-10 border-b border-gray-300">
-    <p class="transition-transform text-4xl animate-move-right text-center p-4 text-white border-b-4 border-sky-300">
-      Project Login and Register
-    </p>
-  </header>
+    <!-- Main Content Section: Login and Register -->
+    <main class="flex flex-wrap w-full">
+      <!-- Left Section: Login -->
+      <section class="flex-1 p-10 text-4xl text-center border-r border-gray-500 bg-gray-300 bg-opacity-85 
+      transition-transform hover:bg-[#4c3a90] hover:text-white mb-4 hover:scale-95 hover:rounded-3xl">
+        <h1>Sign in</h1>
+        <a routerLink="/login" class="block">
+          <img src="/assets/reg.png" class="max-w-xs mx-auto mt-4 cursor-pointer" alt="Login Image">
+        </a>
+      </section>
 
-  <!-- Main Content Section: Login and Register -->
-  <main class="flex flex-wrap w-full">
-
-    <!-- Left Section: Login -->
-    <section class="flex-1 p-10 text-4xl text-center border-r border-gray-500 bg-gray-300 bg-opacity-85 
-    transition-transform hover:bg-[#4c3a90] hover:text-white mb-4 hover:scale-95 hover:rounded-3xl">
-      <h1>Sign in</h1>
-      <a routerLink="/login" class="block">
-        <img src="/assets/reg.png" class="max-w-xs mx-auto mt-4 cursor-pointer" alt="Login Image">
-      </a>
-    </section>
-
-    <!-- Right Section: Register -->
-    <section class="flex-1 p-10 text-4xl text-center border-r border-gray-500 bg-gray-300 bg-opacity-85 
-    transition-transform hover:bg-[#4c3a90] hover:text-white mb-4 hover:scale-95 hover:rounded-3xl">
-      <h1 class="text-4xl mb-4">Sign up</h1>
-      <a routerLink="/register" class="block">
-        <img src="/assets/user.png" class="max-w-xs mx-auto mt-4 cursor-pointer" alt="Register Image">
-      </a>
-    </section>
-
-  </main>
-
-</body>
+      <!-- Right Section: Register -->
+      <section class="flex-1 p-10 text-4xl text-center border-r border-gray-500 bg-gray-300 bg-opacity-85 
+      transition-transform hover:bg-[#4c3a90] hover:text-white mb-4 hover:scale-95 hover:rounded-3xl">
+        <h1 class="text-4xl mb-4">Sign up</h1>
+        <a routerLink="/register" class="block">
+          <img src="/assets/user.png" class="max-w-xs mx-auto mt-4 cursor-pointer" alt="Register Image">
+        </a>
+      </section>
+    </main>
+  </body>
