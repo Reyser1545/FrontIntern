@@ -1,0 +1,139 @@
+<body class="bg-indigo-950">
+    <div class="card flex items-center justify-center space-x-4">
+      <div class="text-4xl my-3">Mainpage</div>
+    </div>
+    <div class=" flex justify-between items-center mb-4">
+        <button class="w-full text-center py-3 px-6 bg-blue-500 text-white hover:bg-blue-600 transition-all" (click)="logout()">Logout</button>
+        <button pButton type="button" label="Go to Login" [routerLink]="['/']" class="text-center w-full py-3 px-6 bg-blue-500 text-white hover:bg-blue-600 transition-all">Login</button>
+      </div>
+    <!-- Order Report Form (Centered) -->
+    <div class="flex justify-center items-center min-h-screen">
+      <div class="card p-6 m-8 shadow-lg rounded-lg w-full max-w-lg">
+        <h2 class="text-xl font-semibold mb-4 text-center">Order Report</h2>
+        <form [formGroup]="orderReportForm" (ngSubmit)="onOrderReportSubmit()">
+          
+          <!-- Registration Type -->
+          <div class="mb-4">
+            <label for="registrationType" class="block text-lg font-medium text-gray-700">Registration Type</label>
+            <input
+              id="registrationType"
+              formControlName="regis_type"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Registration Type"
+            />
+          </div>
+  
+          <!-- Registration Id -->
+          <div class="mb-4">
+            <label for="registrationId" class="block text-lg font-medium text-gray-700">Registration Id</label>
+            <input
+              id="registrationId"
+              formControlName="regis_id"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Registration Id"
+            />
+          </div>
+  
+          <!-- Company Name -->
+          <div class="mb-4">
+            <label for="companyName" class="block text-lg font-medium text-gray-700">Company Name</label>
+            <input
+              id="companyName"
+              formControlName="company_name"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Company Name"
+            />
+          </div>
+  
+          <!-- Inquiry Purpose -->
+          <div class="mb-4">
+            <label for="inquiryPurpose" class="block text-lg font-medium text-gray-700">Inquiry Purpose</label>
+            <input
+              id="inquiryPurpose"
+              formControlName="purpose"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Inquiry Purpose"
+            />
+          </div>
+  
+          <!-- Product Type -->
+          <div class="mb-4">
+            <label for="productType" class="block text-lg font-medium text-gray-700">Product Type</label>
+            <input
+              id="productType"
+              formControlName="product_type"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Product Type"
+            />
+          </div>
+  
+          <!-- Member Ref No -->
+          <div class="mb-4">
+            <label for="memberRefNo" class="block text-lg font-medium text-gray-700">Member Ref No</label>
+            <input
+              id="memberRefNo"
+              formControlName="ref_no"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Member Ref No"
+            />
+          </div>
+  
+          <!-- Display Inquiry -->
+          <div class="mb-4">
+            <label for="displayInquiry" class="block text-lg font-medium text-gray-700">Display Inquiry</label>
+            <input
+              id="displayInquiry"
+              formControlName="inquiry"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Display Inquiry"
+            />
+          </div>
+  
+          <!-- Consent Flag -->
+          <div class="mb-4">
+            <label for="consentFlag" class="block text-lg font-medium text-gray-700">Consent Flag</label>
+            <input
+              id="consentFlag"
+              formControlName="flag"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Consent Flag"
+            />
+          </div>
+  
+          <!-- Prefer Language -->
+          <div class="mb-4">
+            <label for="preferLanguage" class="block text-lg font-medium text-gray-700">Prefer Language</label>
+            <input
+              id="preferLanguage"
+              formControlName="language"
+              type="text"
+              class="w-full mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+              placeholder="Enter Prefer Language"
+            />
+          </div>
+  
+          <!-- Order Report Button -->
+          <div class="text-center mt-4">
+            <button
+              type="submit"
+              class="w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all"
+            >
+              <i class="pi pi-download mr-2"></i> Order Report
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Buttons for Logout and Login -->
+   
+  </body>
+  

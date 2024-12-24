@@ -1,0 +1,13 @@
+/* Global PrimeNG Toast configuration */
+.p-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .p-toast .p-toast-message {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  

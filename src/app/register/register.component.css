@@ -1,0 +1,17 @@
+::ng-deep .p-inputwrapper {
+    position: relative;
+  }
+  
+  ::ng-deep .p-inputwrapper .p-datepicker-trigger {
+    position: absolute;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000; /* Adjust icon color if needed */
+  }
+  
+  ::ng-deep .p-calendar input {
+    padding-right: 2rem; /* Add padding to make space for the icon */
+  }
+  

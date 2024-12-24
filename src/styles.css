@@ -29,31 +29,4 @@
 
 
 /* Custom styles for your application */
-body {
-  background-image: url('/assets/city2.jpg');
-  background-size: cover;
-  background-position: center;
-}
 
-  .p-field input, .p-password input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px; /* same as password input */
-  }
-  
-  .p-field input {
-    border-radius: 8px; /* same as password input */
-  }
-  
-  .p-password .p-inputtext {
-    width: 100%;
-    padding: 10px;
-   
-  }
-  
-  vg-player {
-    width: 100%;
-    max-width: 600px; /* Limit the maximum width */
-    height: auto; /* Let the height adjust proportionally */
-  }
-  

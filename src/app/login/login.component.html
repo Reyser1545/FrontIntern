@@ -1,58 +1,61 @@
-<body>
-  <!-- Main Content Wrapper with Background Image -->
-  <div class="min-h-screen flex justify-center items-center bg-cover bg-center">
-    <div class="max-w-md w-full p-6 bg-sky-900 bg-opacity-85 rounded-lg shadow-lg">
-      <!-- Login Form Section -->
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-fluid space-y-4 p-10">
+<body class="bg-gray-400 min-h-screen">
+  <div class="flex justify-center items-center min-h-screen">
+    <div class="card p-6 shadow-lg rounded-lg max-w-md w-full">
+      <h2 class="text-2xl font-semibold text-center mb-6">Sign in</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
         <!-- Username Field -->
-        <div class="p-field">
-          <label for="username" class="text-white text-lg">Username</label>
-          <input 
-            id="username"
-            type="text"
-            formControlName="username"
-            placeholder="Enter your username"
-            [ngClass]="{ 'p-invalid': f['username'].invalid && f['username'].touched }"
-            class="p-inputtext p-component w-full p-2 p-border-round focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <small *ngIf="f['username'].invalid && f['username'].touched" class="p-error text-red-500 text-sm">
-            Username is required or must be at least 3 characters long
-          </small>
+        <div class="mb-4 relative">
+          <label for="username" class="block text-lg font-medium text-gray-700">Username</label>
+          <div class="relative">
+            <input 
+              id="username"
+              type="text"
+              formControlName="username"
+              placeholder="Enter your Username"
+              class="w-full mt-2 p-3 pl-10 pr-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+            />
+           </div>
         </div>
-
-        <!-- Password Field -->
-        <div class="p-field">
-          <label for="password" class="text-white text-lg">Password</label>
-          <p-password 
-            id="password"
-            formControlName="password"
-            placeholder="Enter your password"
-            [toggleMask]="true"
-            [feedback]="false"
-            [ngClass]="{ 'p-invalid': f['password'].invalid && f['password'].touched }"
-            class="p-password p-component w-full p-border-round focus:outline-none focus:ring-2 focus:ring-blue-400"
-          ></p-password>
-          <small *ngIf="f['password'].invalid && f['password'].touched" class="p-error text-red-500 text-sm">
-            Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-          </small>
+       <!-- Password Field -->
+        <div class="mb-4 relative">
+          <label for="password" class="block text-lg font-medium text-gray-700">Password</label>
+          <div class="relative">
+            <input 
+              id="password"
+              [type]="showPassword ? 'text' : 'password'" 
+              formControlName="password"
+              placeholder="Enter your password"
+              class="w-full mt-2 p-3 pl-10 pr-12 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+            />
+            <!-- PrimeNG Button for Toggle -->
+            <button 
+              pButton 
+              type="button" 
+              class="absolute top-9 right-1  transform -translate-y-1/2 "
+              (click)="togglePasswordVisibility()" 
+              [icon]="showPassword ? 'pi pi-eye-slash' : 'pi pi-eye'" 
+              aria-label="Toggle Password Visibility">
+            </button>
+          </div>
         </div>
-        
         <!-- Submit Button -->
-        <button
-          type="submit"
-          pButton
-          label="Login"
-          icon="pi pi-sign-in"
-          [disabled]="loginForm.invalid"
-          class="text-center w-full p-3 rounded-md bg-gray-300 text-sky-900 mt-5 hover:bg-sky-600 hover:text-white disabled:bg-gray-500"
-        ></button>
-        
-        <!-- Back to Home Link -->
-        <div class="text-center">
-          <a routerLink="/" class="hover:bg-sky-700 text-white mt-5 inline-block text-center transition-colors duration-300">Back to Home</a>
+        <div class="text-center mt-4">
+          <button 
+            type="submit" 
+            class="w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-500 transition-all">
+            <i class="pi pi-sign-in mr-2"></i> Submit
+          </button>
+        </div>
+        <!-- Forgot Password Link -->
+        <div class="text-center mt-4">
+          <a href="#" class="text-blue-500 hover:text-blue-700">Forgot Password?</a>
         </div>
       </form>
     </div>
   </div>
+  <button pButton type="button" label="Go to Main" [routerLink]="'/main'" class="w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all">
+  </button>
+  <!-- PrimeNG Toast Component for Error Notifications -->
+  <p-toast></p-toast>
 </body>
